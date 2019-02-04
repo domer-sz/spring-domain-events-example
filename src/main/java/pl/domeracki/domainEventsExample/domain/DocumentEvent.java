@@ -1,4 +1,4 @@
-package com.example.demo;
+package pl.domeracki.domainEventsExample.domain;
 
 import java.time.Instant;
 

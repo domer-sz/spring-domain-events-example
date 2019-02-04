@@ -1,8 +1,11 @@
-package com.example.demo;
+package pl.domeracki.domainEventsExample.adapters.secondary;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
+import pl.domeracki.domainEventsExample.domain.CustomDocumentRepository;
+import pl.domeracki.domainEventsExample.domain.Document;
+import pl.domeracki.domainEventsExample.domain.DocumentEvent;
 
 import java.time.Instant;
 

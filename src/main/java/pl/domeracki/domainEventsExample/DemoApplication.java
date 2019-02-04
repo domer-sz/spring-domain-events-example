@@ -1,4 +1,4 @@
-package com.example.demo;
+package pl.domeracki.domainEventsExample;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.slf4j.Logger;
@@ -9,6 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import pl.domeracki.domainEventsExample.domain.Document;
+import pl.domeracki.domainEventsExample.domain.DocumentRepository;
 
 import java.util.UUID;
 import java.util.concurrent.Executor;
