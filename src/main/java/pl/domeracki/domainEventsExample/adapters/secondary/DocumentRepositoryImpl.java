@@ -10,12 +10,12 @@ import pl.domeracki.domainEventsExample.domain.DocumentEvent;
 import java.time.Instant;
 
 @Component
-public class CustomDocumentRepositoryImpl implements CustomDocumentRepository {
+public class DocumentRepositoryImpl implements CustomDocumentRepository {
 
     private final MongoOperations mongoOperations;
     private final ApplicationEventPublisher applicationEventPublisher;
 
-    public CustomDocumentRepositoryImpl(MongoOperations mongoOperations, ApplicationEventPublisher applicationEventPublisher) {
+    public DocumentRepositoryImpl(MongoOperations mongoOperations, ApplicationEventPublisher applicationEventPublisher) {
         this.mongoOperations = mongoOperations;
         this.applicationEventPublisher = applicationEventPublisher;
     }
@@ -23,7 +23,7 @@ public class CustomDocumentRepositoryImpl implements CustomDocumentRepository {
     @Override
     public void customSave(Document document) {
         mongoOperations.save(document);
-        applicationEventPublisher.publishEvent(new DocumentEvent(Instant.now(), null));
+        applicationEventPublisher.publishEvent(new DocumentEvent(Instant.now(), document));
         document.clearEvents();
     }
 }

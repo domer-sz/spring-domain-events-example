@@ -13,13 +13,20 @@ public class DocumentEventListener {
 
     @Async("documentListenerThreadPoolTaskExecutor")
     @EventListener
-    public void handleDocumentEvent(DocumentEvent event) {
+    public void handleDocumentEventThreadPoolTaskExecutor(DocumentEvent event) throws InterruptedException {
+        Thread.sleep(100);
         logger.info("ThreadPoolTaskExecutor: " + event);
     }
 
     @Async("documentListenerThreadPoolExecutor")
     @EventListener
-    public void handleDocumentEvent2(DocumentEvent event) {
+    public void handleDocumentEventThreadPoolExecutor(DocumentEvent event) throws InterruptedException {
+        Thread.sleep(150);
         logger.info("ThreadPoolExecutor: " + event);
+    }
+
+    @EventListener
+    public void handleDocumentEventSync(DocumentEvent event) {
+        logger.info("SYNC: " + event);
     }
 }
