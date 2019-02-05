@@ -44,16 +44,17 @@ public class DemoApplication {
 
     @Bean(name = "documentListenerThreadPoolExecutor")
     public Executor getDocumentListenerThreadPooExecutor() {
+        final int workQueueCapacity = 100;
         return new ThreadPoolExecutor(
             1,
             100,
             0,
             TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue(100),
+            new LinkedBlockingQueue<>(workQueueCapacity),
             new ThreadFactoryBuilder()
                 .setNameFormat("MyPool-%d")
                 .build(),
-            (runnable, executor) -> logger.error("NotificationBus cannot accept more tasks, work queue(size=${executor.queue.size} was exceeded) ")
+            (runnable, executor) -> logger.error("NotificationBus cannot accept more tasks, work queue (limit="+workQueueCapacity+") was exceeded")
         );
     }
 }
